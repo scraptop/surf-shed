@@ -8,3 +8,7 @@ production, so we will use that.
 ## Set python version
 
     uv python pin 3.12
+
+## Install cookiecutter
+
+    uv pip install cookiecutter==2.6.0

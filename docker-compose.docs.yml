@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: surf_shed_local_docs
+    container_name: surf_shed_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./surf_shed:/app/surf_shed:z
+    ports:
+      - '9000:9000'
+    command: /start-docs

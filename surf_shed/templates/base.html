@@ -64,6 +64,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'booking:new_booking' %}">Boka</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'booking:cancel_booking' %}">Avboka</a>
+                </li>
                 {% if request.user.is_authenticated %}
                   <li class="nav-item">
                     <a class="nav-link"

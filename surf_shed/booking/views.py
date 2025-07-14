@@ -1,3 +1,11 @@
-from django.shortcuts import render  # noqa: F401
+from django.shortcuts import render
 
-# Create your views here.
+
+def new_booking(request):
+    context = {}
+    return render(request, "booking/new_booking.html", context)
+
+
+def cancel_booking(request):
+    context = {}
+    return render(request, "booking/cancel_booking.html", context)

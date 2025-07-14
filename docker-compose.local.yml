@@ -1,7 +1,7 @@
 volumes:
   surf_shed_local_postgres_data: {}
   surf_shed_local_postgres_data_backups: {}
-  
+
 
 services:
   django:

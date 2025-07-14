@@ -71,7 +71,7 @@ RUN chmod +x /start
 
 
 # copy application code to WORKDIR
-COPY --chown=django:django . ${APP_HOME} 
+COPY --chown=django:django . ${APP_HOME}
 # explicitly create the media folder before changing ownership below
 RUN mkdir -p ${APP_HOME}/surf_shed/media
 

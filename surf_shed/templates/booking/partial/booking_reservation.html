@@ -1,0 +1,56 @@
+</br />
+<form>
+  <fieldset>
+    <legend>Skriv in din kod från svenska lag och tryck bekräfta för att boka.</legend>
+    <div class="row">
+      <label for="selected_board_name" class="col-sm-2 col-form-label">Vald bräda</label>
+      <div class="col-sm-10">
+        <input type="text"
+               readonly=""
+               class="form-control-plaintext"
+               id="selected_board_name"
+               value="{{ board_name }}" />
+      </div>
+    </div>
+    <div class="row">
+      <label for="staticDate" class="col-sm-2 col-form-label">Vald dag</label>
+      <div class="col-sm-10">
+        <input type="text"
+               readonly=""
+               class="form-control-plaintext"
+               id="staticDate"
+               value="{{ date_data }}" />
+      </div>
+    </div>
+    <div class="row">
+      <label for="staticTime" class="col-sm-2 col-form-label">Vald tid</label>
+      <div class="col-sm-10">
+        <input type="text"
+               readonly=""
+               class="form-control-plaintext"
+               id="staticTime"
+               value="kl: {{ time_data_start }}:00 to {{ time_data_end|add:"1" }}:00" />
+      </div>
+    </div>
+    <div>
+      <label for="booking_password" class="form-label mt-4">Skriv in koden från svenska lag.</label>
+      <div class="col-sm-4">
+        <input class="form-control form-control-lg"
+               id="booking_password"
+               name="auth_password"
+               placeholder="Svenskalag koden"
+               autocomplete="off" />
+      </div>
+    </div>
+    <input id="board_id" name="board_id" value="{{ board_id }}" type="hidden"/ />
+    <input id="time_id_start" name="time_data" value="{{ time_data_start }}" type="hidden"/ />
+    <input id="time_id_end" name="time_data_end" value="{{ time_data_end }}" type="hidden"/ />
+    <input id="date_id" name="date_data" value="{{ date_data }}" type="hidden"/ />
+  </br />
+  <button type="submit"
+          class="btn btn-primary btn-lg confirmBtn"
+          hx-post="do_booking/"
+          hx-trigger="click"
+          hx-target="#booking-check-out-alert-placeholder">Bekräfta</button>
+</fieldset>
+</form>

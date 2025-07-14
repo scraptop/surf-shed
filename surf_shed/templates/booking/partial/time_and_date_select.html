@@ -1,0 +1,44 @@
+{% load static %}
+
+<script src="{% static 'js/time_selection.js' %}"></script>
+<!-- Inside schedule.html -->
+<p>{{ name }}</p>
+<div id="bosse"></div>
+<div class="row">
+  {% for day in days_record %}
+    <div class="col">
+      <div class="btn-group-vertical w-100">
+        <button type="button" class="btn btn-info btn-lg w-100">
+          {{ day.title }}
+        </br />
+        {{ day.date }}
+      </button>
+      {% for time in day.times %}
+        {% if time.booked %}
+          <button type="button" class="btn btn-warning disabled btn-lg w-100">Bokad</button>
+        {% else %}
+          <button type="button"
+                  id="time-button-{{ forloop.parentloop.counter }}-{{ forloop.counter }}"
+                  class="btn btn-primary btn-lg timebtn w-100"
+                  hx-post="update_check_out/"
+                  hx-trigger="click"
+                  hx-target="#booking-check-out"
+                  hx-include="[id='board_{{ forloop.parentloop.counter }}-{{ forloop.counter }}'], [id='selection_start_time'], [id='selection_end_time'], [id='time_{{ forloop.parentloop.counter }}-{{ forloop.counter }}'], [id='date_{{ forloop.parentloop.counter }}-{{ forloop.counter }}']"
+                  onclick="click: changeTimeButtonClass(this)">
+            {{ time.start_hour }}:00
+            <input id="board_{{ forloop.parentloop.counter }}-{{ forloop.counter }}" name="board_id" value="{{ board_id }}" type="hidden"/ />
+            <input id="time_{{ forloop.parentloop.counter }}-{{ forloop.counter }}" name="time_data" value="{{ time.start_hour }}" type="hidden"/ />
+            <input id="date_{{ forloop.parentloop.counter }}-{{ forloop.counter }}" name="date_data" value="{{ day.date }}" type="hidden"/ />
+          </button>
+        {% endif %}
+        <!-- End time.booked -->
+      {% endfor %}
+      <!-- End day.times -->
+    </div>
+    <!-- End btn-group-vertical"  -->
+  </div>
+  <!-- End col div"  -->
+{% endfor %}
+<!-- End days_record -->
+</div>
+<!-- End schedule-container -->

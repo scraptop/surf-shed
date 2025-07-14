@@ -1,5 +1,64 @@
 {% extends "../base.html" %}
 
 {% block content %}
-  Tjenare mannen, dax att boka bräda!
+</br />
+<!---  Board select -->
+</br />
+<div class="row">
+  <div class="col">
+    <div class="card border-primary mb-3">
+      <div class="card-header">
+        <h2>Välj bräda</h2>
+      </div>
+      <div class="card-body">{% include "booking/partial/board_select.html" %}</div>
+      <!---  End  card body -->
+    </div>
+    <!---  End  card header -->
+  </div>
+  <!---  End  col -->
+</div>
+<!---  End row-->
+<!--- Time select -->
+</br />
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <h2>Välj tid</h2>
+      </div>
+      <div class="card-body">
+        <div id="updateElement">
+          <!-- This content will be replaced by the response from your Django view -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---  End col -->
+</div>
+<!---  End row-->
+<!--- complete booking -->
+</br />
+<div class="row">
+  <div class="col">
+    <div class="card border-secondary mb-3">
+      <div class="card-header">
+        <h2>Slutför bokning</h2>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <div id="booking-check-out">
+          <!-- This content will be replaced by the response from your Django view -->
+        </div>
+      </br />
+      <div id="booking-check-out-alert-placeholder">
+        <!-- This content will be replaced by the response from your Django view -->
+      </div>
+    </div>
+    <!-- End card body -->
+  </div>
+  <!-- End card -->
+</div>
+<!---  End col -->
+</div>
+<!---  End row-->
 {% endblock content %}

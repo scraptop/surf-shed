@@ -274,3 +274,5 @@ surf_shed/media/
 .ipython/
 .env
 .envs/*
+!.envs/.local/*
+!.envs/.local

@@ -1,0 +1,17 @@
+{% if error_message %}
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>{{ error_message }}</strong>
+  </div>
+{% else %}
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Tack för din bokning!</strong>
+  </br />
+  Ditt bokningsnummer är:
+</br />
+<span class="badge bg-primary">
+  <h2>{{ booking_number }}</h2>
+</span>
+</div>
+{% endif %}

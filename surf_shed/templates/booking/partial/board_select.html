@@ -1,0 +1,47 @@
+<script>
+  // Remove highlights from all .cell elements
+  function removeButtonHighlights() {
+    console.log('do something')
+    document.querySelectorAll('.cell').forEach(function(cell) {
+      cell.classList.remove('highlight')
+    })
+  }
+
+  // Add highlight to the clicked cell
+  function addButtonHighlight(cell) {
+    console.log('do more')
+    cell.classList.add('highlight')
+    // For debugging, log the cell content or id if available:
+    console.log('Cell highlighted:', cell.textContent.trim())
+  }
+
+
+  function changeButtonClass(selectedButton) {
+    // Remove "btn-info" class from all buttons and reset them to "btn-primary"
+    document.querySelectorAll(".btn").forEach(button => {
+      button.classList.remove("btn-info");
+      button.classList.add("btn-primary");
+    });
+
+    // Add "btn-info" to the clicked button
+    selectedButton.classList.remove("btn-primary");
+    selectedButton.classList.add("btn-info");
+  }
+</script>
+<div class="d-grid gap-2">
+  {% for board in boards %}
+    <button class="btn btn-lg btn-primary"
+            type="button"
+            hx-post="update_time_and_date_select/"
+            hx-trigger="click"
+            hx-target="#updateElement"
+            hx-include="[id='{{ board.item_name }}'], [id='{{ board.id }}']"
+            onclick="click: changeButtonClass(this)">
+      {{ board.item_name }}
+      <input id="{{ board.item_name }}" name="board_name" value="{{ board.item_name }}" type="hidden"/ />
+      <input id="{{ board.id }}" name="board_id" value="{{ board.id }}" type="hidden"/ />
+    </button>
+  {% endfor %}
+  <!-- end boards -->
+</div>
+<!-- end boards -->

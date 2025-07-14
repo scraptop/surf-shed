@@ -9,3 +9,7 @@ urlpatterns = [
     path("book/", view=new_booking, name="new_booking"),
     path("cancel/", view=cancel_booking, name="cancel_booking"),
 ]
+
+htmx_patterns = []
+
+urlpatterns += htmx_patterns

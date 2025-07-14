@@ -40,8 +40,12 @@
       <!-- place project specific Javascript in this file -->
       <script defer src="{% static 'js/project.js' %}"></script>
     {% endblock javascript %}
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@2.0.4"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'></script>
   </head>
-  <body class="{% block bodyclass %}{% endblock bodyclass %}">
+  <body class="{% block bodyclass %}{% endblock bodyclass %}"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% block body %}
       <div class="mb-1">
         <nav class="navbar navbar-expand-md navbar-light bg-light">

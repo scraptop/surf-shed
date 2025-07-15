@@ -19,7 +19,9 @@ htmx_patterns = [
     path("book/do_booking/", views.do_booking, name="do-booking"),
     path("cancel/cancel_booking/", views.cancel_booking, name="cancel-booking"),
     path(
-        "cancel/do_cancel_booking/", views.do_cancel_booking, name="do-cancel-booking"
+        "cancel/do_cancel_booking/",
+        views.do_cancel_booking,
+        name="do-cancel-booking",
     ),
 ]
 

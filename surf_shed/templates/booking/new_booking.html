@@ -24,37 +24,6 @@
   <!---  End  col -->
 </div>
 <!---  End row-->
-<!--- copilot oob swapping and more -->
-{% if False %}
-</br />
-<div class="row">
-  <div class="card">
-    <div class="card-header">
-      <h2>OOB SWAPPING</h2>
-    </div>
-    <!--- end card header -->
-    <div class="card-body">
-      <h5 class="card-title">multi target update</h5>
-      <p class="card-text">Update multiple targets using this method.</p>
-      <!-- This button triggers an HTMX request -->
-      <button hx-post="/booking/update_view_oob/"
-              hx-trigger="click"
-              hx-target="#updateElement1"
-              hx-swap="outerHTML">Update Both Divs</button>
-      <div id="updateElement1">
-        <!-- Initial content for element 1 -->
-        <p>Old Content for Div 1</p>
-      </div>
-      <div id="updateElement2">
-        <!-- Initial content for element 2 -->
-        <p>Old Content for Div 2</p>
-      </div>
-    </div>
-    <!-- end card -->
-  </div>
-</div>
-<div>
-{% endif %}
 <!--- Time select -->
 </br />
 <div class="row">

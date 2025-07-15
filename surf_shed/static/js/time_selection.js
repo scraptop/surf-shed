@@ -166,9 +166,18 @@ function updateInfoDisplay(firstInfo, lastInfo) {
 function toggleButton(button, prefix = 'prefix') {
   if (!button || !button.id) return;
 
+  const MAX_ACTIVE = 5;
+  const consecutive = getConsecutiveActiveIncludingSelectedButton(button, prefix);
+	const info = getButtonInfo(button, prefix);
+	const firstInfo = getButtonInfo(consecutive[0], prefix);
+	const lastInfo = getButtonInfo(consecutive[consecutive.length - 1], prefix);
+
   if (button.classList.contains(CLASS_ACTIVE)) {
-    deactivateButton(button);
-    return;
+    if ((info.row == lastInfo.row) || (info.row == firstInfo.row)) {
+
+        deactivateButton(button);
+        return;
+      }
   }
 
   const adjacent = isAdjacentToActive(button, prefix);
@@ -179,12 +188,7 @@ function toggleButton(button, prefix = 'prefix') {
     return;
   }
 
-  const consecutive = getConsecutiveActiveIncludingSelectedButton(button, prefix);
-	const info = getButtonInfo(button, prefix);
-	const firstInfo = getButtonInfo(consecutive[0], prefix);
-	const lastInfo = getButtonInfo(consecutive[consecutive.length - 1], prefix);
 
-	const MAX_ACTIVE = 3;
 
   if (consecutive.length < MAX_ACTIVE) {
     activateButton(button);
@@ -200,7 +204,7 @@ function toggleButton(button, prefix = 'prefix') {
     } else if (info.row == firstInfo.row) {
       // Clicked above the group → remove bottom
 			console.log("Clicked above the group → remove bottom");
-      deactivateButton(consecutive[2]);
+      deactivateButton(consecutive[MAX_ACTIVE-1]);
 
     } else {
       // Clicked in the middle → invalid (won't increase total)

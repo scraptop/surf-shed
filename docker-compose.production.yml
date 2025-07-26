@@ -22,6 +22,14 @@ services:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
     command: /start
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'   # 50% of 1 vCPU
+          memory: 200M  # 400MB RAM limit
+        reservations:
+          cpus: '0.25'  # Guarantees 25% of CPU
+          memory: 100M  # Guarantees 200MB RAM
 
   postgres:
     build:
@@ -46,6 +54,15 @@ services:
     ports:
       - '0.0.0.0:80:80'
       - '0.0.0.0:443:443'
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'   # 50% of 1 vCPU
+          memory: 100M  # 400MB RAM limit
+        reservations:
+          cpus: '0.25'  # Guarantees 25% of CPU
+          memory: 50M  # Guarantees 200MB RAM
 
   redis:
     image: docker.io/redis:6

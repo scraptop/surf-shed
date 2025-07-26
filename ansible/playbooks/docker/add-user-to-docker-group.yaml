@@ -1,0 +1,12 @@
+---
+- name: Add user to docker group
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Add user to docker group
+      ansible.builtin.user:
+        name: surfshed
+        groups: docker
+        append: yes
+

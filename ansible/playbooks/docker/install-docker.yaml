@@ -38,4 +38,3 @@
         name: docker-ce
         state: present
         update_cache: true
-

@@ -1,0 +1,17 @@
+---
+- name: Create a new user and grant sudo access
+  hosts: all
+  become: true
+  tasks:
+    - name: Create the user
+      ansible.builtin.user:
+        name: surfshed
+        state: present
+        shell: /bin/bash
+        create_home: yes
+
+    - name: Add user to sudoers group
+      ansible.builtin.user:
+        name: surfshed
+        groups: sudo
+        append: yes

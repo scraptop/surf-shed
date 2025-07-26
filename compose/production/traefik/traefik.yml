@@ -1,8 +1,18 @@
 log:
   level: DEBUG
 
-api:
-  insecure: true
+#api:
+#  insecure: true
+
+tls:
+  certificates:
+    - certFile: /certs/domain.cert.pem
+      keyFile: /certs/private.key.pem
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /certs/domain.cert.pem
+        keyFile: /certs/private.key.pem
 
 entryPoints:
   web:
@@ -18,38 +28,27 @@ entryPoints:
     # https
     address: ':443'
 
-certificatesResolvers:
-  letsencrypt:
-    # https://doc.traefik.io/traefik/https/acme/#lets-encrypt
-    acme:
-      email: 'samuel@example.com'
-      storage: /etc/traefik/acme/acme.json
-      # https://doc.traefik.io/traefik/https/acme/#httpchallenge
-      httpChallenge:
-        entryPoint: web
-
 http:
   routers:
     web-secure-router:
-      rule: 'Host(`example.com`) || Host(`www.example.com`)'
+      rule: 'Host(`surfshed.scraptop.dev`) || Host(`www.scraptop.dev`)'
       entryPoints:
         - web-secure
       middlewares:
         - csrf
       service: django
-      tls:
-        # https://doc.traefik.io/traefik/routing/routers/#certresolver
-        certResolver: letsencrypt
+      #service: dummy-server
+      tls: true
 
     web-media-router:
-      rule: '(Host(`example.com`) || Host(`www.example.com`)) && PathPrefix(`/media/`)'
+      rule: '(Host(`surfshed.scraptop.dev`) || Host(`www.scraptop.dev`)) && PathPrefix(`/media/`)'
       entryPoints:
         - web-secure
       middlewares:
         - csrf
       service: django-media
-      tls:
-        certResolver: letsencrypt
+      tls: true
+
 
   middlewares:
     csrf:
@@ -68,6 +67,11 @@ http:
       loadBalancer:
         servers:
           - url: http://nginx:80
+
+    dummy-server:
+      loadBalancer:
+        servers:
+          - port: 5678
 
 providers:
   # https://doc.traefik.io/traefik/master/providers/file/

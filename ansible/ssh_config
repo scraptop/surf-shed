@@ -1,0 +1,4 @@
+Host do_surfshed
+  HostName 64.226.71.127
+  User surfshed
+  IdentityFile /home/sam/.ssh/surfshed/surfshed

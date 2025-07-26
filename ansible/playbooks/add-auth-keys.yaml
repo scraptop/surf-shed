@@ -1,0 +1,9 @@
+---
+- name: Set authorized key
+  hosts: all
+  tasks:
+  - name: Do Set authorized key
+    ansible.posix.authorized_key:
+      user: surfshed
+      state: present
+      key: "{{ lookup('file', '~/.ssh/surfshed/surfshed.pub') }}"

@@ -4,9 +4,12 @@ volumes:
   production_traefik: {}
   production_django_media: {}
 
-
-
 services:
+
+  dummy-server:
+    image: hashicorp/http-echo
+    command: ["-text=🔒 Hello from TLS dummy!"]
+
   django:
     build:
       context: .

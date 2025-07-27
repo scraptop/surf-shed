@@ -278,5 +278,5 @@ surf_shed/media/
 !.envs/.local
 
 # Secrets
-./certs/*
-!./certs/readme
+certs/*
+!./certs/readme.md

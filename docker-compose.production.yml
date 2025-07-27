@@ -25,9 +25,6 @@ services:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
     command: /start
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`64.226.71.127`)"
     deploy:
       resources:
         limits:

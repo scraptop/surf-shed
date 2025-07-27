@@ -73,6 +73,12 @@ docker-save-django:
 docker-save-traefik:
   docker save -o docker_traefik.tar surf_shed_production_traefik
 
+docker-load:
+  docker load -i docker_prod_bundle.tar
+
+docker-load-django:
+  docker load -i docker_django.tar
+
 docker-clean:
   @echo "https://depot.dev/blog/docker-clear-cache"
 

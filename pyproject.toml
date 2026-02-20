@@ -134,3 +134,8 @@ extend-unsafe-fixes = [
 
 [tool.ruff.lint.isort]
 force-single-line = true
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+]

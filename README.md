@@ -68,3 +68,28 @@ The following details how to deploy this application.
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](https://cookiecutter-django.readthedocs.io/en/latest/3-deployment/deployment-with-docker.html).
+
+## Development Setup
+Installing dependencies
+This project uses uv for dependency management. Install it from https://docs.astral.sh/uv/getting-started/installation/ then run:
+
+    $ uv sync
+
+This creates a .venv/ directory and installs all dependencies at the versions pinned in uv.lock.
+
+Running commands
+Prefix commands with uv run to use the project's virtual environment:
+
+
+    $ uv run python manage.py runserver
+    $ uv run pytest
+
+Or activate the virtual environment directly:
+
+
+    $ source .venv/bin/activate
+
+Pre-commit hooks
+Install the git hooks after syncing:
+
+    $ uv run pre-commit install

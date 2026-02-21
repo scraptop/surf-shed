@@ -49,6 +49,8 @@ services:
     image: surf_shed_production_traefik
     depends_on:
       - django
+    environment:
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
     volumes:
       - production_traefik:/etc/traefik/acme
     ports:
